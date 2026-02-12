@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import './weather.css';
 import Livedatetime from "./LiveDateTime";
@@ -14,7 +15,7 @@ const Weather = () => {
     function handleClick() {
         setView(true);
     }
-    const getIconUrl = (iconCode) => 
+    const getIconUrl = (iconCode) => // Its a Func that takes one input IconCode and insert it into the Url.
         `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     
     const search = async (city) => {
@@ -56,16 +57,19 @@ const Weather = () => {
     }
     useEffect(()=> {
         search('London');
-    }, [])
+    }, []) // run this effect only once when the Page loaded/component mounted
     useEffect(() => {
         if (view) {
-           inputRef.current?.focus();
+           inputRef.current?.focus(); 
+           // if the input box exist, put focus into it so that user can type.
         }
-    }, [view]);
+    }, [view]); //run this effect everytime the view gets true.
     return (
         <div className="container">
             <div className="title">
-                <h1>Weather Data app</h1>
+                <h1 data-testid = 'appTitle'>
+                    Weather Data app
+                </h1>
             </div>
             {view ? <>
             <div className="searchBox">
@@ -79,7 +83,8 @@ const Weather = () => {
                   <p className="Location_nav_text">Location</p>
                </div>
                <div className="Location_nav_action">
-                  <FontAwesomeIcon className="Location_nav_addBtn" icon = { faPlus } onClick={() => handleClick()}/>
+                  <FontAwesomeIcon className="Location_nav_addBtn" icon = { faPlus } onClick={() => handleClick()}
+                   aria-label = 'addon' />
                </div>
             </div>
             </>}
@@ -98,9 +103,12 @@ const Weather = () => {
                     <div className="forecast-item" key={index}>
                         <p className="forecast-date">
                             {(() => {
-                                const date = new Date(item.dt * 1000); 
-                                const day = date.getDate();
-                                const month = date.toLocaleDateString('en-US', { month: 'short' });
+                                const date = new Date(item.dt * 1000);  
+                                // new Date is the JavaScript date object 
+                                // [item.dt is the date and time of forecast item ]
+                                const day = date.getDate(); 
+                                //getDate() Javascript date method used to get day of month
+                                const month = date.toLocaleDateString('en-US', { month: 'short' }); //toLocaleDateString() method used to convert date object into a human readeable string [Locale: format the date based on country/Language for UK 1 Jan, for US Jan 1]
                                 const getOrdinal = (d) => {
                                     if (d > 3 && d < 21) return 'th';
                                     switch (d % 10) {
@@ -127,7 +135,7 @@ const Weather = () => {
                                     src = {getIconUrl(item.weather[0].icon)}>
                                     </img>
                                     <p className="forecast-temp">
-                                        {Math.floor(item.main.temp)}°C
+                                        {Math.floor(item.main.temp)}°C 
                                     </p>
                                 </div>
                             ))}
