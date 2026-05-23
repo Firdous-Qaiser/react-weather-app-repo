@@ -21,6 +21,18 @@ A modern React.js weather application built with Vite that fetches real-time wea
 - CSS3
 - Weather API
 
+## Screenshots
+
+### Desktop View
+![Desktop View 1](./screenshots/desktop_view_1.png)
+
+### Mobile View
+![Mobile View 1](./screenshots/mobile_view_1.png)
+
+## Testing
+
+- Jest testing has been implemented to ensure component reliability and application stability.
+
 ## Installation
 
 ```bash
