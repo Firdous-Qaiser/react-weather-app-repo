@@ -27,7 +27,7 @@ A modern React.js weather application built with Vite that fetches real-time wea
 ![Desktop View 1](./screenshots/desktop_view_1.png)
 
 ### Mobile View
-![Mobile View 1](./screenshots/mobile_view_1.png)
+https://github.com/Firdous-Qaiser/react-weather-app-repo/blob/master/public/Screenshots/mobile_view.png
 
 ## Testing
 
